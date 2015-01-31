@@ -32,25 +32,123 @@ src="graphics/openstack-cloud-software-horizontal-small.png" /></div>
   <img class="hidden" src="graphics/bullet-nofold-dim.gif" alt="" />
   <img class="hidden" src="graphics/bullet-unfold-dim.gif" alt="" />
   <img src="graphics/openstack-cloud-software-vertical-large.png" alt="OpenStack logo" class="cover" />
-  <h1>Use of OpenStack CI for your own projects</h1>
+  <h1>Consuming Open Source Infrastructure</h1>
   <hr />
-  <div class="smaller">Yolanda Robla Mota
-    &lt;<a href="mailto:yolanda.robla-mota@hp.com">yolanda.robla-mota@hp.com</a>&gt;</div>
+  <div class="smaller">Spencer Krum
+  <ul>
+    &lt;<a href="mailto:nibz@hp.com">nibz@hp.com</a>&gt;<p>
+    irc: nibalizer<p>
+  </div>
 </div>
 
 <div class="slide">
-  <h1>What's OpenStack?</h1>
+  <h1>Who am I?</h1>
+  <ul>
+    <li>Work at HP</li>
+    <li>Open Source: OpenStack and Puppet</li>
+    <li>Build/Run the new ci system inside hp</li>
+    <li>Copy of upstream openstack CI</li>
+  </ul>
+</div>
 
-  <center>
-    <img src="images/openstack-software-diagram.png"/>
-  </center>
+
+<div class="slide">
+  <h1>Consuming Open Source Infrastructure</h1>
+  <ul>
+    <li>Not Trivial</li>
+    <li>Target Audience</li>
+    <li>"what we're doing"</li>
+    <li>Takeaways</li>
+  </ul>
+</div>
+
+
+<div class="slide">
+  <h1>Define Terms</h1>
+  <ul>
+    <li>Open Source</li>
+    <li>Infrastructure</li>
+    <li>Consuming</li>
+  </ul>
 </div>
 
 <div class="slide">
-  <h1>CI Workflow</h1>
+  <h1>Consuming Open Source Infrastructure</h1>
 
   <div align="center"><img src="images/os-ci-workflow.png"></div>
 
+</div>
+
+<div class="slide">
+  <h1>Configuration Management</h1>
+  <ul>
+<pre>
+
+# Node-OS: trusty
+node 'kdc01.openstack.org' {
+  class { 'openstack_project::kdc':
+    sysadmins => hiera('sysadmins', []),
+  }
+}
+
+# Node-OS: trusty
+node 'kdc02.openstack.org' {
+  class { 'openstack_project::kdc':
+    sysadmins => hiera('sysadmins', []),
+    slave     => true,
+  }
+}
+</pre>
+
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Define Terms</h1>
+  <ul>
+    <li>Open Source</li>
+    <li>Infrastructure</li>
+    <li>Consuming</li>
+    <li>Upstream</li>
+    <li>Downstream</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Examples:</h1>
+  <ul>
+    <li>OpenStack CI Infra</li>
+    <li>Mozilla Infra</li>
+    <li>Jenkins Infra</li>
+    <li>WikiMedia Infra</li>
+  </ul>
+</div>
+
+<div class="slide">
+  <h1>Takeaway</h1>
+<br>
+<br>
+<br>
+  <div align="center">We benefit from consuming the infrastructure because we don't have to do <strong>all</strong> the work ourselves.</div>
+</div>
+
+<div class="slide">
+  <h1>Takeaway</h1>
+<br>
+<br>
+<br>
+  <div align="center">We benefit from consuming the infrastructure because we have confidence that the architecture is <strong>viable</strong>.</div>
+</div>
+
+<div class="slide">
+  <h1>Takeaway</h1>
+<br>
+<br>
+<br>
+  <div align="center">We benefit from consuming the infrastructure because we don't have to do <strong>all</strong> the work ourselves.</div>
+<br>
+<br>
+  <div align="center"><strong>Any</strong> departures you take from upstream is technical debt.</div>
 </div>
 
 <div class="slide">
